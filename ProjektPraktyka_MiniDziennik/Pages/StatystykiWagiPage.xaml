@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+    x:Class="ProjektPraktyka_MiniDziennik.Pages.StatystykiWagiPage"
+    BackgroundColor="{StaticResource KolorTla}"
+    Title="StatystykiWagiPage"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="24,20,24,30"
+            Spacing="20">
+
+
+            <!-- GÓRNY PASEK -->
+
+            <Grid
+                ColumnDefinitions="50,*,50"
+                HeightRequest="50">
+
+                <!-- Powrót -->
+
+                <Label
+                    Grid.Column="0"
+                    Text="‹"
+                    FontSize="40"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <!-- Tytuł -->
+
+                <Label
+                    Grid.Column="1"
+                    Text="Statystyki"
+                    FontSize="21"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+
+            <!-- NAGŁÓWEK -->
+
+            <VerticalStackLayout
+                Margin="4,10,4,0"
+                Spacing="4">
+
+                <Label
+                    Text="Waga"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}" />
+
+                <Label
+                    Text="Zobacz swoje pomiary w czasie"
+                    FontSize="15"
+                    TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+            </VerticalStackLayout>
+
+
+            <!-- PRZEŁĄCZNIK ZAKRESU -->
+
+            <Border
+                BackgroundColor="{StaticResource KolorPola}"
+                Stroke="Transparent"
+                Padding="5"
+                StrokeShape="RoundRectangle 16">
+
+                <Grid
+                    ColumnDefinitions="*,*"
+                    HeightRequest="48">
+
+                    <!-- 7 DNI -->
+
+                    <Button
+                        Grid.Column="0"
+                        Text="7 dni"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource KolorAkcentu}"
+                        CornerRadius="12" />
+
+                    <!-- 30 DNI -->
+
+                    <Button
+                        Grid.Column="1"
+                        Text="30 dni"
+                        FontSize="15"
+                        TextColor="{StaticResource KolorTekstu}"
+                        BackgroundColor="Transparent"
+                        CornerRadius="12" />
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- KARTA WYKRESU -->
+
+            <Border
+                BackgroundColor="{StaticResource KolorKarty}"
+                Stroke="Transparent"
+                Padding="15"
+                StrokeShape="RoundRectangle 24">
+
+                <Border.Shadow>
+
+                    <Shadow
+                        Brush="#20000000"
+                        Offset="0,4"
+                        Radius="12"
+                        Opacity="0.10" />
+
+                </Border.Shadow>
+
+
+                <!-- MIEJSCE NA WYKRES -->
+
+                <lvc:CartesianChart
+                    Series="{Binding SerieWykresu}"
+                    XAxes="{Binding OsX}"
+                    YAxes="{Binding OsY}"
+                    HeightRequest="270"
+                    ZoomMode="None" />
+
+            </Border>
+
+
+            <!-- STATYSTYKI -->
+
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+
+
+                <!-- MINIMUM -->
+
+                <Border
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource KolorKarty}"
+                    Stroke="Transparent"
+                    Padding="13"
+                    StrokeShape="RoundRectangle 18">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="MIN"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                        <Label
+                            Text="67,8 kg"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- ŚREDNIA -->
+
+                <Border
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource KolorKarty}"
+                    Stroke="Transparent"
+                    Padding="13"
+                    StrokeShape="RoundRectangle 18">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="ŚREDNIA"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                        <Label
+                            Text="68,6 kg"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <!-- MAKSIMUM -->
+
+                <Border
+                    Grid.Column="2"
+                    BackgroundColor="{StaticResource KolorKarty}"
+                    Stroke="Transparent"
+                    Padding="13"
+                    StrokeShape="RoundRectangle 18">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="MAX"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                        <Label
+                            Text="69,4 kg"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

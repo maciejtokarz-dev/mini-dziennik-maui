@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProjektPraktyka_MiniDziennik.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProjektPraktyka_MiniDziennik"
+    Title="ProjektPraktyka_MiniDziennik">
+
+    <ShellContent
+        Title="DodajEdytujWpisPage"
+        ContentTemplate="{DataTemplate local:Pages.DodajEdytujWpisPage}"
+        Route="DodajEdytujWpisPage" />
+    
+    <!--
+    SzczegolyWpisuPage
+    StatystykiWagiPage
+    DodajEdytujWpisPage
+    -->
+
+</Shell>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjektPraktyka_MiniDziennik.Pages.SzczegolyWpisuPage"
+             BackgroundColor="{StaticResource KolorTla}"
+             Title="SzczegolyWpisuPage"
+             Shell.NavBarIsVisible="False" >
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="24,20,24,30"
+            Spacing="22">
+
+            <!-- GÓRNY PASEK -->
+
+            <Grid
+                ColumnDefinitions="50,*,50"
+                HeightRequest="50">
+
+                <!-- Przycisk powrotu -->
+
+                <Label
+                    Grid.Column="0"
+                    Text="‹"
+                    FontSize="40"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <!-- Tytuł -->
+
+                <Label
+                    Grid.Column="1"
+                    Text="Szczegóły wpisu"
+                    FontSize="21"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+
+            <!-- NAGŁÓWEK -->
+
+            <VerticalStackLayout
+                Margin="4,15,4,0"
+                Spacing="5">
+
+                <Label
+                    Text="WAGA"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    CharacterSpacing="1.5"
+                    TextColor="{StaticResource KolorAkcentu}" />
+
+                <Label
+                    Text="Twój zapis"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}" />
+
+            </VerticalStackLayout>
+
+
+            <!-- GŁÓWNA KARTA -->
+
+            <Border
+                BackgroundColor="{StaticResource KolorKarty}"
+                Stroke="Transparent"
+                Padding="22"
+                StrokeShape="RoundRectangle 24">
+
+                <Border.Shadow>
+
+                    <Shadow
+                        Brush="#20000000"
+                        Offset="0,4"
+                        Radius="12"
+                        Opacity="0.12" />
+
+                </Border.Shadow>
+
+
+                <VerticalStackLayout
+                    Spacing="20">
+
+
+                    <!-- NAZWA I JEDNOSTKA -->
+
+                    <Grid
+                        ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Grid.Column="0"
+                            Text="Waga"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}"
+                            VerticalOptions="Center" />
+
+
+                        <!-- BADGE KG -->
+
+                        <Border
+                            Grid.Column="1"
+                            BackgroundColor="{StaticResource KolorCiemny}"
+                            Padding="13,7"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 10">
+
+                            <Label
+                                Text="kg"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                        </Border>
+
+                    </Grid>
+
+
+                    <!-- POLE WARTOŚCI -->
+
+                    <Border
+                        BackgroundColor="{StaticResource KolorPola}"
+                        Stroke="Transparent"
+                        Padding="18,17"
+                        StrokeShape="RoundRectangle 16">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Wartość"
+                                FontSize="13"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                            <Label
+                                Text="68,5 kg"
+                                FontSize="34"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource KolorTekstu}" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+
+                    <!-- POLE DATY -->
+
+                    <Border
+                        BackgroundColor="{StaticResource KolorPola}"
+                        Stroke="Transparent"
+                        Padding="18,15"
+                        StrokeShape="RoundRectangle 16">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Data pomiaru"
+                                FontSize="13"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                            <Label
+                                Text="17 września 2026, 08:42"
+                                FontSize="17"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource KolorTekstu}" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <!-- PRZYCISKI -->
+
+            <VerticalStackLayout
+                Spacing="12"
+                Margin="0,5,0,0">
+
+
+                <!-- EDYTUJ -->
+
+                <Button
+                    Text="Edytuj wpis"
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource KolorAkcentu}"
+                    CornerRadius="18"
+                    HeightRequest="58" />
+
+
+                <!-- USUŃ -->
+
+                <Button
+                    Text="Usuń wpis"
+                    FontSize="16"
+                    TextColor="{StaticResource KolorTekstu}"
+                    BackgroundColor="Transparent"
+                    BorderColor="#D8D4CE"
+                    BorderWidth="1"
+                    CornerRadius="18"
+                    HeightRequest="54" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>
