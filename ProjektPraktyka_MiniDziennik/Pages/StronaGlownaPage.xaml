@@ -27,6 +27,9 @@
                         StrokeShape="RoundRectangle 28"
                         StrokeThickness="0"
                         Padding="20">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnWagaCard_Clicked" />
+                    </Border.GestureRecognizers>
                     <Border.Shadow>
                         <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
                     </Border.Shadow>
@@ -55,6 +58,9 @@
                         StrokeShape="RoundRectangle 28"
                         StrokeThickness="0"
                         Padding="20">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNotatkiCard_Clicked" />
+                    </Border.GestureRecognizers>
                     <Border.Shadow>
                         <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
                     </Border.Shadow>

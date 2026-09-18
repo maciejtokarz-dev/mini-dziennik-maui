@@ -9,17 +9,20 @@
     <Grid RowDefinitions="Auto, *, Auto">
 
         <Grid Grid.Row="0" ColumnDefinitions="Auto, *" Padding="20,16" VerticalOptions="Center">
-            <Button Text="‹" 
+            <Button Text="&lt;" 
                     FontSize="28" 
                     TextColor="#1E1E1E" 
                     BackgroundColor="Transparent" 
                     Padding="0" 
                     HeightRequest="40" 
                     WidthRequest="40" 
-                    HorizontalOptions="Start" />
+                    HorizontalOptions="Start" 
+                    Clicked="OnWstecz_Clicked"
+                    />
 
             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0">
-                <Label Text="WAGA" 
+                <Label x:Name="KategoriaLabel"
+                       Text="WAGA" 
                        FontSize="11" 
                        TextColor="#EF795A" 
                        FontAttributes="Bold" 
@@ -31,68 +34,27 @@
             </VerticalStackLayout>
         </Grid>
 
-        <ScrollView Grid.Row="1" Padding="20,0,20,90" IsVisible="True">
-            <VerticalStackLayout Spacing="20">
-
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="DZISIAJ" 
-                           FontSize="12" 
-                           FontAttributes="Bold" 
-                           TextColor="#EF795A" 
-                           CharacterSpacing="1" />
-
-                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 20" StrokeThickness="0" Padding="12">
+        <CollectionView Grid.Row="1" x:Name="WpisyListView" Margin="20,0,20,90">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 20" StrokeThickness="0" Padding="12" Margin="0,0,0,12">
                         <Border.Shadow>
                             <Shadow Brush="Black" Opacity="0.02" Offset="0,2" Radius="8"/>
                         </Border.Shadow>
 
                         <Grid ColumnDefinitions="*, Auto" Padding="8,4">
                             <VerticalStackLayout Spacing="2">
-                                <Label Text="78,5 kg" FontSize="20" FontAttributes="Bold" TextColor="#1E1E1E" />
-                                <Label Text="07:10" FontSize="12" TextColor="#9B9893" />
+                                <!-- Tytuł/Wartość: dla wagi np. '78,5 kg', dla notatki np. 'Trening zrobiony' -->
+                                <Label Text="{Binding Wartosc}" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" />
+                                <!-- Data lub godzina -->
+                                <Label Text="{Binding DataWpisu}" FontSize="12" TextColor="#9B9893" />
                             </VerticalStackLayout>
                             <Label Grid.Column="1" Text="›" FontSize="20" TextColor="#9B9893" VerticalOptions="Center" />
                         </Grid>
                     </Border>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="WCZORAJ" 
-                           FontSize="12" 
-                           FontAttributes="Bold" 
-                           TextColor="#EF795A" 
-                           CharacterSpacing="1" />
-
-                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 20" StrokeThickness="0" Padding="12">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.02" Offset="0,2" Radius="8"/>
-                        </Border.Shadow>
-
-                        <VerticalStackLayout Spacing="0">
-
-                            <Grid ColumnDefinitions="*, Auto" Padding="8,8">
-                                <VerticalStackLayout Spacing="2">
-                                    <Label Text="78,9 kg" FontSize="20" FontAttributes="Bold" TextColor="#1E1E1E" />
-                                    <Label Text="19:30" FontSize="12" TextColor="#9B9893" />
-                                </VerticalStackLayout>
-                                <Label Grid.Column="1" Text="›" FontSize="20" TextColor="#9B9893" VerticalOptions="Center" />
-                            </Grid>
-
-                            <BoxView HeightRequest="1" Color="#EFECE5" Margin="8,4" />
-
-                            <Grid ColumnDefinitions="*, Auto" Padding="8,8">
-                                <VerticalStackLayout Spacing="2">
-                                    <Label Text="79,1 kg" FontSize="20" FontAttributes="Bold" TextColor="#1E1E1E" />
-                                    <Label Text="08:15" FontSize="12" TextColor="#9B9893" />
-                                </VerticalStackLayout>
-                                <Label Grid.Column="1" Text="›" FontSize="20" TextColor="#9B9893" VerticalOptions="Center" />
-                            </Grid>
-                        </VerticalStackLayout>
-                    </Border>
-                </VerticalStackLayout>
-
-            </VerticalStackLayout>
-        </ScrollView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <VerticalStackLayout Grid.Row="1" 
                                VerticalOptions="Center" 

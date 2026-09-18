@@ -16,6 +16,15 @@ namespace ProjektPraktyka_MiniDziennik.Pages
         {
             await Shell.Current.GoToAsync(nameof(DodajEdytujWpisPage));
         }
+
+        private async void OnWagaCard_Clicked(object sender, TappedEventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(ListaWpisowPage)}?kategoria=WAGA");
+        }
+        private async void OnNotatkiCard_Clicked(object sender, TappedEventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(ListaWpisowPage)}?kategoria=NOTATKI");
+        }
     }
 
 }
