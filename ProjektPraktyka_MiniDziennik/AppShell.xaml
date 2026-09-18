@@ -7,11 +7,13 @@
     Title="ProjektPraktyka_MiniDziennik">
 
     <ShellContent
-        Title="DodajEdytujWpisPage"
-        ContentTemplate="{DataTemplate local:Pages.DodajEdytujWpisPage}"
-        Route="DodajEdytujWpisPage" />
+        Title="StronaGlownaPage"
+        ContentTemplate="{DataTemplate local:Pages. StatystykiWagiPage}"
+        Route="StronaGlownaPage" />
     
     <!--
+    StronaGlownaPage
+    ListaWpisowPage
     SzczegolyWpisuPage
     StatystykiWagiPage
     DodajEdytujWpisPage
