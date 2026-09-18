@@ -239,14 +239,33 @@
                             Padding="17,0"
                             HeightRequest="62">
 
-                            <DatePicker
-                                Format="dd MMMM yyyy"
-                                FontSize="17"
-                                FontAttributes="Bold"
-                                TextColor="{StaticResource KolorTekstu}"
-                                BackgroundColor="Transparent"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Center" />
+                            <Grid ColumnDefinitions="*, Auto, *">
+                                <DatePicker
+                                    Grid.Column="0"
+                                    Format="dd MMMM yyyy"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Center" />
+
+                                <BoxView Grid.Column="1"
+                                         WidthRequest="1"
+                                         Color="{StaticResource KolorTekstuDrugorzednego}"
+                                         Opacity="0.2"
+                                         Margin="0.12" />
+
+                                <TimePicker
+                                    Grid.Column="2"
+                                    Format="HH:mm"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Grid>
 
                         </Border>
 

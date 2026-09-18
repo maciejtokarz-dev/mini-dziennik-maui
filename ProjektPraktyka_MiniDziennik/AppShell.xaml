@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="StronaGlownaPage"
-        ContentTemplate="{DataTemplate local:Pages. StatystykiWagiPage}"
+        ContentTemplate="{DataTemplate local:Pages.DodajEdytujWpisPage}"
         Route="StronaGlownaPage" />
     
     <!--
