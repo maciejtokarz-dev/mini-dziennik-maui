@@ -99,39 +99,6 @@
             </Button.Shadow>
         </Button>
 
-        <Border Grid.Row="1"
-                BackgroundColor="#FFFFFF"
-                StrokeThickness="0"
-                Padding="8,10,8,14">
-            <Border.Shadow>
-                <Shadow Brush="Black" Opacity="0.04" Offset="0,-4" Radius="12"/>
-            </Border.Shadow>
-
-            <Grid ColumnDefinitions="*, *, *, *">
-
-                <VerticalStackLayout Grid.Column="0" Spacing="2" HorizontalOptions="Center">
-                    <Label Text="⌂" FontSize="22" TextColor="#EF795A" HorizontalOptions="Center" HeightRequest="26" VerticalTextAlignment="Center" />
-                    <Label Text="Główna" FontSize="11" FontAttributes="Bold" TextColor="#EF795A" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1" Spacing="2" HorizontalOptions="Center">
-                    <Label Text="▤" FontSize="20" TextColor="#9B9893" HorizontalOptions="Center" HeightRequest="26" VerticalTextAlignment="Center" />
-                    <Label Text="Kolekcje" FontSize="11" TextColor="#9B9893" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="2" Spacing="2" HorizontalOptions="Center">
-                    <Label Text="♡" FontSize="20" TextColor="#9B9893" HorizontalOptions="Center" HeightRequest="26" VerticalTextAlignment="Center" />
-                    <Label Text="Wyzwania" FontSize="11" TextColor="#9B9893" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="3" Spacing="2" HorizontalOptions="Center">
-                    <Label Text="👤" FontSize="18" TextColor="#9B9893" HorizontalOptions="Center" HeightRequest="26" VerticalTextAlignment="Center" />
-                    <Label Text="Profil" FontSize="11" TextColor="#9B9893" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-
-            </Grid>
-        </Border>
-
     </Grid>
 
 </ContentPage>
