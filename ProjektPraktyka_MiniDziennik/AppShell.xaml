@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="StronaGlownaPage"
-        ContentTemplate="{DataTemplate local:Pages.DodajEdytujWpisPage}"
+        ContentTemplate="{DataTemplate local:Pages.StronaGlownaPage}"
         Route="StronaGlownaPage" />
     
     <!--

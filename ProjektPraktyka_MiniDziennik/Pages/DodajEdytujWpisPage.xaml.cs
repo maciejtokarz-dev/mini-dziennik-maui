@@ -18,4 +18,9 @@ public partial class DodajEdytujWpisPage : ContentPage
         FormularzWagi.IsVisible = false;
         FormularzNotatki.IsVisible = true;
     }
+
+    private async void OnWstecz_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }

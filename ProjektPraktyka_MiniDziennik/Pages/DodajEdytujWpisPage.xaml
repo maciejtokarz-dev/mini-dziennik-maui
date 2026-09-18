@@ -20,12 +20,16 @@
                 HeightRequest="50">
 
                 <Label
-                    Grid.Column="0"
-                    Text="‹"
-                    FontSize="40"
-                    TextColor="{StaticResource KolorTekstu}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                        Grid.Column="0"
+                        Text="&lt;"
+                        FontSize="40"
+                        TextColor="{StaticResource KolorTekstu}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnWstecz_Clicked" />
+                    </Label.GestureRecognizers>
+                </Label>
 
                 <Label
                     Grid.Column="1"
@@ -35,7 +39,6 @@
                     TextColor="{StaticResource KolorTekstu}"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
-
             </Grid>
 
 
