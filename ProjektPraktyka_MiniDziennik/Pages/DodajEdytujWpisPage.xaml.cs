@@ -1,3 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
+using ProjektPraktyka_MiniDziennik.ViewModels;
+
 namespace ProjektPraktyka_MiniDziennik.Pages;
 
 public partial class DodajEdytujWpisPage : ContentPage
@@ -5,22 +8,12 @@ public partial class DodajEdytujWpisPage : ContentPage
     public DodajEdytujWpisPage()
     {
         InitializeComponent();
-    }
 
-    private void Waga_Clicked(object sender, EventArgs e)
-    {
-        FormularzWagi.IsVisible = true;
-        FormularzNotatki.IsVisible = false;
-    }
+        var uslugi = Application.Current?.Handler?.MauiContext?.Services;
 
-    private void Notatka_Clicked(object sender, EventArgs e)
-    {
-        FormularzWagi.IsVisible = false;
-        FormularzNotatki.IsVisible = true;
-    }
+        if (uslugi == null)
+            throw new InvalidOperationException("Nie udało się pobrać usług aplikacji.");
 
-    private async void OnWstecz_Clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
+        BindingContext = uslugi.GetRequiredService<DodajEdytujWpisViewModel>();
     }
 }

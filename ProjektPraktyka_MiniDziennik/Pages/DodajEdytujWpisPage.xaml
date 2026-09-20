@@ -20,15 +20,18 @@
                 HeightRequest="50">
 
                 <Label
-                        Grid.Column="0"
-                        Text="&lt;"
-                        FontSize="40"
-                        TextColor="{StaticResource KolorTekstu}"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
+                    Grid.Column="0"
+                    Text="&lt;"
+                    FontSize="40"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnWstecz_Clicked" />
+                        <TapGestureRecognizer
+                            Command="{Binding WsteczCommand}" />
                     </Label.GestureRecognizers>
+
                 </Label>
 
                 <Label
@@ -84,39 +87,61 @@
                         <Grid
                             ColumnDefinitions="*,*"
                             ColumnSpacing="10">
-
-                            <!-- WAGA -->
                             <Button
                                 Grid.Column="0"
                                 Text="Waga"
                                 FontSize="15"
                                 FontAttributes="Bold"
-                                TextColor="White"
-                                BackgroundColor="{StaticResource KolorAkcentu}"
+                                BackgroundColor="{StaticResource KolorPola}"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}"
                                 CornerRadius="14"
                                 HeightRequest="48"
-                                Clicked="Waga_Clicked" />
-
-                            <!-- NOTATKA -->
+                                Command="{Binding WybierzWageCommand}">
+                                <Button.Triggers>
+                                    <DataTrigger
+                                        TargetType="Button"
+                                        Binding="{Binding CzyWaga}"
+                                        Value="True">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="{StaticResource KolorAkcentu}" />
+                                        <Setter
+                                            Property="TextColor"
+                                            Value="White" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
                             <Button
                                 Grid.Column="1"
                                 Text="Notatka"
                                 FontSize="15"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource KolorTekstuDrugorzednego}"
                                 BackgroundColor="{StaticResource KolorPola}"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}"
                                 CornerRadius="14"
                                 HeightRequest="48"
-                                Clicked="Notatka_Clicked" />
-
+                                Command="{Binding WybierzNotatkeCommand}">
+                                <Button.Triggers>
+                                    <DataTrigger
+                                        TargetType="Button"
+                                        Binding="{Binding CzyNotatka}"
+                                        Value="True">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="{StaticResource KolorAkcentu}" />
+                                        <Setter
+                                            Property="TextColor"
+                                            Value="White" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
                         </Grid>
-
                     </VerticalStackLayout>
 
 
                     <!-- FORMULARZ WAGI -->
                     <VerticalStackLayout
-                        x:Name="FormularzWagi"
+                        IsVisible="{Binding CzyWaga}"
                         Spacing="10">
 
                         <Label
@@ -138,7 +163,7 @@
                                 HeightRequest="62">
 
                                 <Entry
-                                    Text="68,5"
+                                    Text="{Binding WartoscWagi, Mode=TwoWay}"
                                     FontSize="24"
                                     FontAttributes="Bold"
                                     TextColor="{StaticResource KolorTekstu}"
@@ -181,9 +206,8 @@
 
                     <!-- FORMULARZ NOTATKI -->
                     <VerticalStackLayout
-                        x:Name="FormularzNotatki"
-                        Spacing="10"
-                        IsVisible="False">
+                        IsVisible="{Binding CzyNotatka}"
+                        Spacing="10">
 
                         <Label
                             Text="Treść notatki"
@@ -201,7 +225,7 @@
 
                                 <Editor
                                     Grid.Row="0"
-                                    x:Name="PoleNotatki"
+                                    Text="{Binding TrescNotatki, Mode=TwoWay}"
                                     FontSize="16"
                                     TextColor="{StaticResource KolorTekstu}"
                                     BackgroundColor="Transparent"
@@ -213,7 +237,7 @@
 
                                 <Label
                                     Grid.Row="1"
-                                    Text="0/500"
+                                    Text="{Binding LiczbaZnakow}"
                                     FontSize="12"
                                     TextColor="{StaticResource KolorTekstuDrugorzednego}"
                                     HorizontalOptions="End"
@@ -245,6 +269,7 @@
                             <Grid ColumnDefinitions="*, Auto, *">
                                 <DatePicker
                                     Grid.Column="0"
+                                    Date="{Binding DataWpisu, Mode=TwoWay}"
                                     Format="dd MMMM yyyy"
                                     FontSize="14"
                                     FontAttributes="Bold"
@@ -261,6 +286,7 @@
 
                                 <TimePicker
                                     Grid.Column="2"
+                                    Time="{Binding GodzinaWpisu, Mode=TwoWay}"
                                     Format="HH:mm"
                                     FontSize="14"
                                     FontAttributes="Bold"
@@ -284,6 +310,12 @@
 
             </Border>
 
+            <Label
+                Text="{Binding KomunikatBledu}"
+                IsVisible="{Binding CzyJestBlad}"
+                FontSize="13"
+                TextColor="{StaticResource KolorAkcentu}"
+                Margin="3,0,3,0" />
 
             <!-- PRZYCISKI -->
             <VerticalStackLayout
@@ -297,7 +329,8 @@
                     TextColor="White"
                     BackgroundColor="{StaticResource KolorAkcentu}"
                     CornerRadius="18"
-                    HeightRequest="58" />
+                    HeightRequest="58"
+                    Command="{Binding ZapiszCommand}" />
 
                 <Button
                     Text="Anuluj"
@@ -307,7 +340,8 @@
                     BorderColor="#D8D4CE"
                     BorderWidth="1"
                     CornerRadius="18"
-                    HeightRequest="54" />
+                    HeightRequest="54"
+                    Command="{Binding AnulujCommand}" />
 
             </VerticalStackLayout>
 

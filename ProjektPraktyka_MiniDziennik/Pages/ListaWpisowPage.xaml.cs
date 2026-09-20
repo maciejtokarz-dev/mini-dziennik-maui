@@ -1,56 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ProjektPraktyka_MiniDziennik.ViewModels;
 
-namespace ProjektPraktyka_MiniDziennik.Pages
+namespace ProjektPraktyka_MiniDziennik.Pages;
+
+[QueryProperty(nameof(Kategoria), "kategoria")]
+public partial class ListaWpisowPage : ContentPage
 {
-    [QueryProperty(nameof(Kategoria), "kategoria")]
-    public partial class ListaWpisowPage : ContentPage
+    private readonly ListaWpisowViewModel _viewModel;
+
+    public string Kategoria
     {
-        public string Kategoria
+        set
         {
-            set
-            {
-                KategoriaLabel.Text = value;
-                LadowanieDanych(value);
-            }
-        }
-
-        public ListaWpisowPage()
-        {
-            InitializeComponent();
-        }
-
-        private void LadowanieDanych(string kategoria)
-        {
-            if (kategoria == "WAGA")
-            {
-                WpisyListView.ItemsSource = new List<WpisModel>
-                {
-                    new WpisModel { Wartosc = "78,5 kg", DataWpisu = "Dzisiaj, 07:10" },
-                    new WpisModel { Wartosc = "78,9 kg", DataWpisu = "Wczoraj, 19:30" }
-                };
-            }
-            else if (kategoria == "NOTATKI")
-            {
-                WpisyListView.ItemsSource = new List<WpisModel>
-                {
-                    new WpisModel { Wartosc = "Trening zrobiony", DataWpisu = "Wczoraj, 18:00" },
-                    new WpisModel { Wartosc = "Kupić odżywkę białkową", DataWpisu = "3 dni temu" }
-                };
-            }
-        }
-
-        private async void OnWstecz_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("..");
+            _viewModel.Kategoria = value;
         }
     }
 
-    public class WpisModel
-{
-    public string Wartosc { get; set; }
-    public string DataWpisu { get; set; }
-}
+    public ListaWpisowPage()
+    {
+        InitializeComponent();
 
+        var uslugi = Application.Current?.Handler?.MauiContext?.Services;
+
+        if (uslugi == null)
+            throw new InvalidOperationException(
+                "Nie udało się pobrać usług aplikacji.");
+
+        _viewModel =
+            uslugi.GetRequiredService<ListaWpisowViewModel>();
+
+        BindingContext = _viewModel;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        _viewModel.Odswiez();
+    }
 }
