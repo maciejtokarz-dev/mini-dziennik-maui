@@ -38,12 +38,12 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
 
         AnulujCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.Navigation.PopToRootAsync();
         });
 
         WsteczCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.Navigation.PopToRootAsync();
         });
     }
 
@@ -194,7 +194,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         if (CzyJestBlad)
             return;
 
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.Navigation.PopToRootAsync();
     }
 
     private void ZapiszWage()
