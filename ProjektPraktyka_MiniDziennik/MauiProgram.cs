@@ -1,5 +1,6 @@
 ﻿using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
+using ProjektPraktyka_MiniDziennik.Services;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace ProjektPraktyka_MiniDziennik
@@ -22,6 +23,8 @@ namespace ProjektPraktyka_MiniDziennik
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton<WpisService>();
 
             return builder.Build();
         }
