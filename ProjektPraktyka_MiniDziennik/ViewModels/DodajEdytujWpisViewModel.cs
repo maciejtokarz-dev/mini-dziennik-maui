@@ -262,9 +262,8 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         }
 
         if (_edytowanyWpis == null)
-        _wpisService.DodajAsync(new Wpis
         {
-            _wpisService.Dodaj(new Wpis
+            await _wpisService.DodajAsync(new Wpis
             {
                 Typ = TypWpisu.Waga,
                 WartoscWagi = waga,
@@ -278,7 +277,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
             _edytowanyWpis.TrescNotatki = null;
             _edytowanyWpis.DataUtworzenia = PolaczDateIGodzine();
 
-            _wpisService.Aktualizuj(_edytowanyWpis);
+            await _wpisService.AktualizujAsync(_edytowanyWpis);
         }
     }
 
@@ -298,7 +297,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
 
         if (_edytowanyWpis == null)
         {
-            _wpisService.Dodaj(new Wpis
+            await _wpisService.DodajAsync(new Wpis
             {
                 Typ = TypWpisu.Notatka,
                 TrescNotatki = TrescNotatki.Trim(),
@@ -312,7 +311,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
             _edytowanyWpis.TrescNotatki = TrescNotatki.Trim();
             _edytowanyWpis.DataUtworzenia = PolaczDateIGodzine();
 
-            _wpisService.Aktualizuj(_edytowanyWpis);
+            await _wpisService.AktualizujAsync(_edytowanyWpis);
         }
     }
 

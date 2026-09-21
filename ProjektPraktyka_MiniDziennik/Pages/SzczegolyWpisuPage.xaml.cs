@@ -17,12 +17,14 @@ public partial class SzczegolyWpisuPage : ContentPage
         _wpisService = wpisService;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        BindingContext = new SzczegolyWpisuViewModel(
-            _wpisService,
-            IdWp);
+        var viewModel = new SzczegolyWpisuViewModel(_wpisService, IdWp);
+        BindingContext = viewModel;
+
+        // Teraz inicjalizujesz dane
+        await viewModel.InicjalizujAsync(IdWp);
     }
 }

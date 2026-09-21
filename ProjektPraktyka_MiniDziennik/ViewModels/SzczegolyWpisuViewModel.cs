@@ -16,7 +16,7 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
     {
         _wpisService = wpisService;
 
-        _wpis = _wpisService.PobierzPoId(id);
+        //_wpis = _wpisService.PobierzPoIdAsync(id);
 
         WsteczCommand = new Command(async () =>
         {
@@ -47,10 +47,23 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
             if (!potwierdzenie)
                 return;
 
-            _wpisService.Usun(_wpis.Id);
+            await _wpisService.UsunAsync(_wpis.Id);
 
             await Shell.Current.Navigation.PopToRootAsync();
         });
+    }
+    public async Task InicjalizujAsync(int id)
+    {
+        _wpis = await _wpisService.PobierzPoIdAsync(id);
+
+        // Powiadom, że dane się zmieniły
+        OnPropertyChanged(nameof(TypWp));
+        OnPropertyChanged(nameof(Tytul));
+        OnPropertyChanged(nameof(Wartosc));
+        OnPropertyChanged(nameof(DataWpisu));
+        OnPropertyChanged(nameof(CzyWaga));
+        OnPropertyChanged(nameof(CzyNotatka));
+        OnPropertyChanged(nameof(Id));
     }
 
     // =========================

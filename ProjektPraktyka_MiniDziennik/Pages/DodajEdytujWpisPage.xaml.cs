@@ -26,14 +26,14 @@ public partial class DodajEdytujWpisPage : ContentPage
         BindingContext = uslugi.GetRequiredService<DodajEdytujWpisViewModel>();
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
         if (IdWp <= 0)
             return;
 
-        var wpis = _wpisService.PobierzPoId(IdWp);
+        var wpis = await _wpisService.PobierzPoIdAsync(IdWp);
 
         if (wpis == null)
             return;
