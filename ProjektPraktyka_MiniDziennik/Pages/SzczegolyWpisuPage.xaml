@@ -189,6 +189,7 @@
 
                 <Button
                     Text="Edytuj wpis"
+                    Command="{Binding EdytujCommand}"
                     FontSize="17"
                     FontAttributes="Bold"
                     TextColor="White"

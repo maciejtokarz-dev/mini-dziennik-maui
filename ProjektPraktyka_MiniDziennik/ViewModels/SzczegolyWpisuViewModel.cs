@@ -22,6 +22,15 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
         {
             await Shell.Current.GoToAsync("..");
         });
+
+        EdytujCommand = new Command(async () =>
+        {
+            if (_wpis == null)
+                return;
+
+            await Shell.Current.GoToAsync(
+                $"{nameof(Pages.DodajEdytujWpisPage)}?id={_wpis.Id}");
+        });
     }
 
     // =========================
@@ -95,6 +104,7 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
     // =========================
 
     public ICommand WsteczCommand { get; }
+    public ICommand EdytujCommand { get; }
 
     // =========================
     // POWIADOMIENIA
