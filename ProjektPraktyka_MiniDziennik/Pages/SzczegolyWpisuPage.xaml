@@ -95,21 +95,22 @@
 
                         <Label
                             Grid.Column="0"
-                            Text="Waga"
+                            Text="{Binding TypWp}"
                             FontSize="19"
                             FontAttributes="Bold"
                             TextColor="{StaticResource KolorTekstu}"
                             VerticalOptions="Center" />
 
 
-                        <!-- BADGE KG -->
+                        <!--  KG -->
 
                         <Border
                             Grid.Column="1"
                             BackgroundColor="{StaticResource KolorCiemny}"
                             Padding="13,7"
                             Stroke="Transparent"
-                            StrokeShape="RoundRectangle 10">
+                            StrokeShape="RoundRectangle 10"
+                            IsVisible="{Binding CzyWaga}">
 
                             <Label
                                 Text="kg"
@@ -117,6 +118,27 @@
                                 FontAttributes="Bold"
                                 TextColor="White" />
 
+                        </Border>
+
+                        <!-- txt -->
+                        
+                        <Border
+                            Grid.Column="1"
+                            BackgroundColor="{StaticResource KolorCiemny}"
+                            StrokeShape="RoundRectangle 14"
+                            WidthRequest="48"
+                            HeightRequest="40"
+                            StrokeThickness="0"
+                            IsVisible="{Binding CzyNotatka}">
+                            
+                            <Label
+                                Text="txt"
+                                TextColor="White"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        
                         </Border>
 
                     </Grid>

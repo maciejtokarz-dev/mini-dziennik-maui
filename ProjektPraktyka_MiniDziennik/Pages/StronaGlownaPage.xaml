@@ -46,9 +46,9 @@
                             <VerticalStackLayout Spacing="4">
                                 <Grid ColumnDefinitions="*, Auto">
                                     <Label Text="Wartość" FontSize="13" TextColor="#9B9893" />
-                                    <Label Text="Dziś, 08:42" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
+                                    <Label Text="{Binding DataOstatniejWagi}" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
                                 </Grid>
-                                <Label Text="68,5 kg" FontSize="26" FontAttributes="Bold" TextColor="#1E1E1E" />
+                                <Label Text="{Binding OstatniaWaga}" FontSize="26" FontAttributes="Bold" TextColor="#1E1E1E" />
                             </VerticalStackLayout>
                         </Border>
                     </VerticalStackLayout>
@@ -77,9 +77,9 @@
                             <VerticalStackLayout Spacing="4">
                                 <Grid ColumnDefinitions="*, Auto">
                                     <Label Text="Ostatnia notatka" FontSize="13" TextColor="#9B9893" />
-                                    <Label Text="Wczoraj" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
+                                    <Label Text="{Binding DataOstatniejNotatki}" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
                                 </Grid>
-                                <Label Text="Trening zrobiony" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" />
+                                <Label Text="{Binding OstatniaNotatka}" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" />
                             </VerticalStackLayout>
                         </Border>
                     </VerticalStackLayout>
