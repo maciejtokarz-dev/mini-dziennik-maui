@@ -40,12 +40,12 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
 
         AnulujCommand = new Command(async () =>
         {
-            await Shell.Current.Navigation.PopToRootAsync();
+            await Shell.Current.GoToAsync("..");
         });
 
         WsteczCommand = new Command(async () =>
         {
-            await Shell.Current.Navigation.PopToRootAsync();
+            await Shell.Current.GoToAsync("..");
         });
     }
 
@@ -218,20 +218,20 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
 
         if (CzyWaga)
         {
-            ZapiszWage();
+            await ZapiszWageAsync();
         }
         else
         {
-            ZapiszNotatke();
+            await ZapiszNotatkeAsync();
         }
 
         if (CzyJestBlad)
             return;
 
-        await Shell.Current.Navigation.PopToRootAsync();
+        await Shell.Current.GoToAsync("..");
     }
 
-    private void ZapiszWage()
+    private async Task ZapiszWageAsync()
     {
         if (string.IsNullOrWhiteSpace(WartoscWagi))
         {
@@ -262,6 +262,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         }
 
         if (_edytowanyWpis == null)
+        _wpisService.DodajAsync(new Wpis
         {
             _wpisService.Dodaj(new Wpis
             {
@@ -281,7 +282,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         }
     }
 
-    private void ZapiszNotatke()
+    private async Task ZapiszNotatkeAsync()
     {
         if (string.IsNullOrWhiteSpace(TrescNotatki))
         {

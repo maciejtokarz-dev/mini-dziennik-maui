@@ -88,25 +88,32 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
     // ODŚWIEŻANIE
     // =========================
 
-    public void Odswiez()
+    public async Task OdswiezAsync()
     {
-        Wpisy.Clear();
-
         TypWpisu typ = Kategoria == "WAGA"
             ? TypWpisu.Waga
             : TypWpisu.Notatka;
 
-        var wpisy = _wpisService
-            .PobierzWszystkie()
+        var wszystkieWpisy = await _wpisService.PobierzWszystkieAsync();
+
+        var przefiltrowane = wszystkieWpisy
             .Where(x => x.Typ == typ)
             .OrderByDescending(x => x.DataUtworzenia);
 
-        foreach (var wpis in wpisy)
+        MainThread.BeginInvokeOnMainThread(() =>
         {
-            Wpisy.Add(new WpisWidoku(wpis));
-        }
+            Wpisy.Clear();
+            foreach (var wpis in przefiltrowane)
+            {
+                Wpisy.Add(new WpisWidoku(wpis));
+            }
+            OnPropertyChanged(nameof(CzyBrakWpisow));
+        });
+    }
 
-        OnPropertyChanged(nameof(CzyBrakWpisow));
+    public void Odswiez()
+    {
+        _ = OdswiezAsync();
     }
 
     // =========================
