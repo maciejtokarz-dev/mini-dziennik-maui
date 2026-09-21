@@ -19,13 +19,15 @@
 
                 <!-- Przycisk powrotu -->
 
-                <Label
-                    Grid.Column="0"
-                    Text="‹"
-                    FontSize="40"
-                    TextColor="{StaticResource KolorTekstu}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                <Button Text="&lt;" 
+                    FontSize="28" 
+                    TextColor="#1E1E1E" 
+                    BackgroundColor="Transparent" 
+                    Padding="0" 
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    HorizontalOptions="Start"
+                    Command="{Binding WsteczCommand}" />
 
                 <!-- Tytuł -->
 

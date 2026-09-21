@@ -20,7 +20,7 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
 
         WsteczCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.Navigation.PopToRootAsync();
         });
 
         EdytujCommand = new Command(async () =>
