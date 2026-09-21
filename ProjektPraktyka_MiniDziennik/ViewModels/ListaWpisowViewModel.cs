@@ -27,6 +27,12 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
             await Shell.Current.GoToAsync(nameof(Pages.DodajEdytujWpisPage));
         });
 
+        // Komenda otwierania wykresu statystyk wagi
+        OtworzWykresCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync(nameof(Pages.StatystykiWagiPage));
+        });
+
         OdswiezCommand = new Command(Odswiez);
 
         WybierzWpisCommand = new Command<WpisWidoku>(async (wpis) =>
@@ -55,6 +61,7 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
 
             OnPropertyChanged();
             OnPropertyChanged(nameof(NazwaKategorii));
+            OnPropertyChanged(nameof(CzyWaga)); 
             OnPropertyChanged(nameof(Wpisy));
             OnPropertyChanged(nameof(CzyBrakWpisow));
         }
@@ -63,6 +70,8 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
     public string NazwaKategorii => Kategoria == "WAGA"
         ? "WAGA"
         : "NOTATKI";
+
+    public bool CzyWaga => Kategoria == "WAGA";
 
     // =========================
     // WPISY
@@ -79,6 +88,8 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
     public ICommand WsteczCommand { get; }
 
     public ICommand DodajWpisCommand { get; }
+
+    public ICommand OtworzWykresCommand { get; } // <- Nowa komenda dla przycisku wykresu
 
     public ICommand OdswiezCommand { get; }
 

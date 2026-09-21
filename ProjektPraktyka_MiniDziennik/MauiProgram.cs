@@ -25,10 +25,12 @@ namespace ProjektPraktyka_MiniDziennik
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddSingleton<WpisService>();
 
             builder.Services.AddTransient<DodajEdytujWpisViewModel>();
             builder.Services.AddTransient<ListaWpisowViewModel>();
+            builder.Services.AddSingleton<WpisService>();
+            builder.Services.AddTransient<Pages.StatystykiWagiPage>();
+            builder.Services.AddTransient<ViewModels.StatystykiWagiViewModel>();
             builder.Services.AddTransient<SzczegolyWpisuViewModel>();
 
             return builder.Build();
