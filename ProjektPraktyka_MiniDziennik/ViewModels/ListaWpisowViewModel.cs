@@ -28,6 +28,15 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
         });
 
         OdswiezCommand = new Command(Odswiez);
+
+        WybierzWpisCommand = new Command<WpisWidoku>(async (wpis) =>
+        {
+            if (wpis == null)
+                return;
+
+            await Shell.Current.GoToAsync(
+                $"{nameof(Pages.SzczegolyWpisuPage)}?id={wpis.Id}");
+        });         
     }
 
     // =========================
@@ -72,6 +81,8 @@ public class ListaWpisowViewModel : INotifyPropertyChanged
     public ICommand DodajWpisCommand { get; }
 
     public ICommand OdswiezCommand { get; }
+
+    public ICommand WybierzWpisCommand { get; }
 
     // =========================
     // ODŚWIEŻANIE
