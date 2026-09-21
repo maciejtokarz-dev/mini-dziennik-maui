@@ -1,4 +1,6 @@
-﻿namespace ProjektPraktyka_MiniDziennik.Models;
+﻿using SQLite;
+
+namespace ProjektPraktyka_MiniDziennik.Models;
 
 public enum TypWpisu
 {
@@ -8,6 +10,7 @@ public enum TypWpisu
 
 public class Wpis
 {
+    [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
 
     public TypWpisu Typ { get; set; }

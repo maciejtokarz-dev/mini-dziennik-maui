@@ -184,11 +184,11 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
 
         if (CzyWaga)
         {
-            ZapiszWage();
+            await ZapiszWageAsync();
         }
         else
         {
-            ZapiszNotatke();
+            await ZapiszNotatkeAsync();
         }
 
         if (CzyJestBlad)
@@ -197,7 +197,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         await Shell.Current.GoToAsync("..");
     }
 
-    private void ZapiszWage()
+    private async Task ZapiszWageAsync()
     {
         if (string.IsNullOrWhiteSpace(WartoscWagi))
         {
@@ -227,7 +227,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
             return;
         }
 
-        _wpisService.Dodaj(new Wpis
+        _wpisService.DodajAsync(new Wpis
         {
             Typ = TypWpisu.Waga,
             WartoscWagi = waga,
@@ -235,7 +235,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
         });
     }
 
-    private void ZapiszNotatke()
+    private async Task ZapiszNotatkeAsync()
     {
         if (string.IsNullOrWhiteSpace(TrescNotatki))
         {
@@ -249,7 +249,7 @@ public class DodajEdytujWpisViewModel : INotifyPropertyChanged
             return;
         }
 
-        _wpisService.Dodaj(new Wpis
+        _wpisService.DodajAsync(new Wpis
         {
             Typ = TypWpisu.Notatka,
             TrescNotatki = TrescNotatki.Trim(),
