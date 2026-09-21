@@ -29,6 +29,7 @@ namespace ProjektPraktyka_MiniDziennik
 
             builder.Services.AddTransient<DodajEdytujWpisViewModel>();
             builder.Services.AddTransient<ListaWpisowViewModel>();
+            builder.Services.AddSingleton<WpisService>();
 
             return builder.Build();
         }

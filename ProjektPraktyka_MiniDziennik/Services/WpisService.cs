@@ -1,51 +1,58 @@
-﻿using ProjektPraktyka_MiniDziennik.Models;
+﻿using SQLite;
+using ProjektPraktyka_MiniDziennik.Models;
+
 
 namespace ProjektPraktyka_MiniDziennik.Services;
 
 public class WpisService
 {
-    private readonly List<Wpis> _wpisy = new();
+    private SQLiteAsyncConnection _db;
 
-    private int _kolejneId = 1;
-
-    public IReadOnlyList<Wpis> PobierzWszystkie()
+    private async Task InitAsync()
     {
-        return _wpisy
-            .OrderByDescending(x => x.DataUtworzenia)
-            .ToList();
-    }
-
-    public Wpis? PobierzPoId(int id)
-    {
-        return _wpisy.FirstOrDefault(x => x.Id == id);
-    }
-
-    public void Dodaj(Wpis wpis)
-    {
-        wpis.Id = _kolejneId++;
-        _wpisy.Add(wpis);
-    }
-
-    public void Aktualizuj(Wpis wpis)
-    {
-        var istniejacyWpis = PobierzPoId(wpis.Id);
-
-        if (istniejacyWpis == null)
+        if (_db != null)
             return;
 
-        istniejacyWpis.Typ = wpis.Typ;
-        istniejacyWpis.WartoscWagi = wpis.WartoscWagi;
-        istniejacyWpis.TrescNotatki = wpis.TrescNotatki;
-        istniejacyWpis.DataUtworzenia = wpis.DataUtworzenia;
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Dziennik.db3");
+        _db = new SQLiteAsyncConnection(dbPath);
+
+        await _db.CreateTableAsync<Wpis>();
     }
 
-    public void Usun(int id)
+    public async Task<List<Wpis>> PobierzWszystkieAsync()
     {
-        var wpis = PobierzPoId(id);
+        await InitAsync();
+        return await _db.Table<Wpis>()
+                        .OrderByDescending(x => x.DataUtworzenia)
+                        .ToListAsync();
+    }
 
+    public async Task<Wpis?> PobierzPoIdAsync(int id)
+    {
+        await InitAsync();
+        return await _db.Table<Wpis>()
+                        .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public async Task DodajAsync(Wpis wpis)
+    {
+        await InitAsync();
+        await _db.InsertAsync(wpis);
+    }
+
+    public async Task AktualizujAsync(Wpis wpis)
+    {
+        await InitAsync();
+        await _db.UpdateAsync(wpis);
+    }
+
+    public async Task UsunAsync(int id)
+    {
+        await InitAsync();
+        var wpis = await PobierzPoIdAsync(id);
         if (wpis != null)
         {
-            _wpisy.Remove(wpis);
+            await _db.DeleteAsync(wpis);
         }
     }
 }
