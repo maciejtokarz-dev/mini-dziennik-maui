@@ -31,6 +31,7 @@ namespace ProjektPraktyka_MiniDziennik
             builder.Services.AddSingleton<WpisService>();
             builder.Services.AddTransient<Pages.StatystykiWagiPage>();
             builder.Services.AddTransient<ViewModels.StatystykiWagiViewModel>();
+            builder.Services.AddTransient<SzczegolyWpisuViewModel>();
 
             return builder.Build();
         }

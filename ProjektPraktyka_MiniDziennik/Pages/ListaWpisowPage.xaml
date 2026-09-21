@@ -59,6 +59,9 @@
         <CollectionView
             Grid.Row="1"
             ItemsSource="{Binding Wpisy}"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding WybierzWpisCommand}"
+            SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
             Margin="20,0,20,90">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
