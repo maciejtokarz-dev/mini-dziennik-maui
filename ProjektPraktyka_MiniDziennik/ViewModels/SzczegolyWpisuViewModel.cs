@@ -31,6 +31,26 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
             await Shell.Current.GoToAsync(
                 $"{nameof(Pages.DodajEdytujWpisPage)}?id={_wpis.Id}");
         });
+
+        UsunCommand = new Command(async () =>
+        {
+            if (_wpis == null)
+                return;
+
+            bool potwierdzenie = await Application.Current!.Windows[0].Page!
+                .DisplayAlert(
+                    "Usuń wpis",
+                    "Czy na pewno chcesz usunąć ten wpis?",
+                    "Usuń",
+                    "Anuluj");
+
+            if (!potwierdzenie)
+                return;
+
+            _wpisService.Usun(_wpis.Id);
+
+            await Shell.Current.Navigation.PopToRootAsync();
+        });
     }
 
     // =========================
@@ -105,6 +125,7 @@ public class SzczegolyWpisuViewModel : INotifyPropertyChanged
 
     public ICommand WsteczCommand { get; }
     public ICommand EdytujCommand { get; }
+    public ICommand UsunCommand { get; }
 
     // =========================
     // POWIADOMIENIA
