@@ -19,13 +19,15 @@
 
                 <!-- Przycisk powrotu -->
 
-                <Label
-                    Grid.Column="0"
-                    Text="‹"
-                    FontSize="40"
-                    TextColor="{StaticResource KolorTekstu}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                <Button Text="&lt;" 
+                    FontSize="28" 
+                    TextColor="#1E1E1E" 
+                    BackgroundColor="Transparent" 
+                    Padding="0" 
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    HorizontalOptions="Start"
+                    Command="{Binding WsteczCommand}" />
 
                 <!-- Tytuł -->
 
@@ -48,14 +50,14 @@
                 Spacing="5">
 
                 <Label
-                    Text="WAGA"
+                    Text="{Binding TypWp}"
                     FontSize="13"
                     FontAttributes="Bold"
                     CharacterSpacing="1.5"
                     TextColor="{StaticResource KolorAkcentu}" />
 
                 <Label
-                    Text="Twój zapis"
+                    Text="{Binding Tytul}"
                     FontSize="30"
                     FontAttributes="Bold"
                     TextColor="{StaticResource KolorTekstu}" />
@@ -137,7 +139,7 @@
                                 TextColor="{StaticResource KolorTekstuDrugorzednego}" />
 
                             <Label
-                                Text="68,5 kg"
+                                Text="{Binding Wartosc}"
                                 FontSize="34"
                                 FontAttributes="Bold"
                                 TextColor="{StaticResource KolorTekstu}" />
@@ -164,7 +166,7 @@
                                 TextColor="{StaticResource KolorTekstuDrugorzednego}" />
 
                             <Label
-                                Text="17 września 2026, 08:42"
+                                Text="{Binding DataWpisu}"
                                 FontSize="17"
                                 FontAttributes="Bold"
                                 TextColor="{StaticResource KolorTekstu}" />
@@ -189,6 +191,7 @@
 
                 <Button
                     Text="Edytuj wpis"
+                    Command="{Binding EdytujCommand}"
                     FontSize="17"
                     FontAttributes="Bold"
                     TextColor="White"
@@ -201,6 +204,7 @@
 
                 <Button
                     Text="Usuń wpis"
+                    Command="{Binding UsunCommand}"
                     FontSize="16"
                     TextColor="{StaticResource KolorTekstu}"
                     BackgroundColor="Transparent"
