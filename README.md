@@ -58,7 +58,7 @@ ProjektPraktyka_MiniDziennik/
 Projekt wykonany w dwuosobowym zespole (design i implementacja):
 
 - **Maciej Tokarz** – Strona główna, lista wpisów, baza danych, wykres
-- **Paweł Nowakowski** – Szczegóły wpisu, Statystyki wagi, widok szczegółów, edycja, usuwanie
+- **Paweł Nowakowski** – Widok szczegółów wpisu, statystyki wagi, edycja i usuwanie.
 
 ## Możliwe dalsze usprawnienia
 
