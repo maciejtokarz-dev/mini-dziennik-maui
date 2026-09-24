@@ -16,10 +16,10 @@ Projekt zespołowy (2 osoby): od moodboardu i mockupu, przez design, po działaj
 ## Zrzuty ekranu
 
 <p>
-  <img src="home.png" width="200" alt="Ekran główny">
-  <img src="add.png" width="200" alt="Dodawanie wpisu">
-  <img src="history.png" width="200" alt="Historia wpisów">
-  <img src="stats.png" width="200" alt="Statystyki wagi">
+  <img src="docs/screenshots/home.png" width="200" alt="Ekran główny">
+  <img src="docs/screenshots/add.png" width="200" alt="Dodawanie wpisu">
+  <img src="docs/screenshots/history.png" width="200" alt="Historia wpisów">
+  <img src="docs/screenshots/stats.png" width="200" alt="Statystyki wagi">
 </p>
 
 ## Technologie
