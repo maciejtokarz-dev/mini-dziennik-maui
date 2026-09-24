@@ -1,6 +1,6 @@
 # Mini Dziennik
 
-Mobilna aplikacja typu dziennik napisana w **.NET MAUI (C#)**. Projekt zrealizowany w parze podczas praktyk zawodowych, na podstawie wcześniej przygotowanego mockupu i moodboardu.
+Mobilna aplikacja typu dziennik napisana w **.NET MAUI (C#)**. Projekt zespołowy (2 osoby): od mockupu i moodboardu, przez design, po działającą aplikację na Androida.
 
 ## Funkcje
 
@@ -55,7 +55,7 @@ ProjektPraktyka_MiniDziennik/
 
 ## Autorzy
 
-Projekt realizowany w parze podczas praktyk:
+Projekt wykonany w dwuosobowym zespole (design i implementacja):
 
 - **Maciej Tokarz** – [UZUPEŁNIJ: za co byłeś odpowiedzialny, np. ekrany, style, nawigacja]
 - **[UZUPEŁNIJ: imię/login kolegi]** – [UZUPEŁNIJ: zakres pracy]
