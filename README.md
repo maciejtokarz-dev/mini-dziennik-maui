@@ -1,26 +1,31 @@
 # Mini Dziennik
 
-Mobilna aplikacja typu dziennik napisana w **.NET MAUI (C#)**. Projekt zespołowy (2 osoby): od mockupu i moodboardu, przez design, po działającą aplikację na Androida.
+Mobilna aplikacja typu dziennik napisana w **.NET MAUI (C#)**. Pozwala zapisywać pomiary wagi oraz notatki, przeglądać historię wpisów i śledzić zmiany wagi na wykresie. Dane są przechowywane lokalnie w **SQLite**.
+
+Projekt zespołowy (2 osoby): od moodboardu i mockupu, przez design, po działającą aplikację na Androida.
 
 ## Funkcje
 
-<!-- UZUPEŁNIJ: wypisz to, co aplikacja faktycznie robi -->
-- Dodawanie wpisów do dziennika
-- Przeglądanie listy wpisów
-- Edycja i usuwanie wpisów
-- Aplikacja składa się z 5 ekranów
+- **Ekran główny**: podsumowanie z ostatnim pomiarem wagi i ostatnią notatką
+- **Dodawanie wpisu**: wybór rodzaju (waga lub notatka), walidacja zakresu wagi (20–300 kg), data i godzina domyślnie ustawiane na aktualne
+- **Historia wpisów wagi**: lista pomiarów z przejściem do widoku szczegółów
+- **Szczegóły wpisu**: podgląd, edycja i usuwanie
+- **Statystyki wagi**: wykres zmian z ostatnich 7 lub 30 dni oraz wartości minimalna, średnia i maksymalna
+- **Lokalna baza danych SQLite**: wpisy zostają w aplikacji po jej zamknięciu
 
 ## Zrzuty ekranu
 
-<!-- UZUPEŁNIJ: zrób screeny z emulatora i wrzuć je do docs/screenshots/ -->
-| Ekran główny | Dodawanie wpisu | Szczegóły |
-|---|---|---|
-| ![Ekran główny](docs/screenshots/home.png) | ![Dodawanie](docs/screenshots/add.png) | ![Szczegóły](docs/screenshots/details.png) |
+<p>
+  <img src="docs/screenshots/home.png" width="200" alt="Ekran główny">
+  <img src="docs/screenshots/add.png" width="200" alt="Dodawanie wpisu">
+  <img src="docs/screenshots/history.png" width="200" alt="Historia wpisów">
+  <img src="docs/screenshots/stats.png" width="200" alt="Statystyki wagi">
+</p>
 
 ## Technologie
 
-- .NET MAUI, C#
-- XAML
+- .NET MAUI, C#, XAML
+- SQLite (lokalna baza danych)
 - Wzorzec MVVM z użyciem `Command` (zamiast obsługi zdarzeń `Clicked`)
 - Testowane na emulatorze Androida (Pixel 8, API 36)
 
@@ -44,7 +49,6 @@ git clone https://github.com/maciejtokarz-dev/mini-dziennik-maui.git
 
 ## Struktura projektu
 
-<!-- UZUPEŁNIJ: dopasuj do prawdziwych folderów -->
 ```
 ProjektPraktyka_MiniDziennik/
 ├── Models/        # modele danych
@@ -57,11 +61,14 @@ ProjektPraktyka_MiniDziennik/
 
 Projekt wykonany w dwuosobowym zespole (design i implementacja):
 
-- **Maciej Tokarz** – Strona główna, lista wpisów, baza danych, wykres
-- **Paweł Nowakowski** – Widok szczegółów wpisu, statystyki wagi, edycja i usuwanie.
+- **Maciej Tokarz**: strona główna, lista wpisów, baza danych, wykres
+- **Paweł Nowakowski**: szczegóły wpisu, statystyki wagi, edycja, usuwanie
 
 ## Możliwe dalsze usprawnienia
 
+- Eksport danych do pliku (CSV)
+- Przypomnienia o dodaniu wpisu
+- Kolejne rodzaje pomiarów (np. sen, nawodnienie)
 - Wyszukiwanie i filtrowanie wpisów
 - Testy jednostkowe warstwy ViewModel
 - Ciemny motyw
