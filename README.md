@@ -44,14 +44,14 @@ Kroki:
 git clone https://github.com/maciejtokarz-dev/mini-dziennik-maui.git
 ```
 
-1. Otwórz plik `ProjektPraktyka_MiniDziennik.slnx` w Visual Studio.
+1. Otwórz plik `MiniDziennik.slnx` w Visual Studio.
 2. Wybierz cel uruchomienia: **Android Emulator**.
 3. Uruchom projekt (F5).
 
 ## Struktura projektu
 
 ```
-ProjektPraktyka_MiniDziennik/
+MiniDziennik/
 ├── Models/        # modele danych
 ├── Pages/         # ekrany XAML (strona główna, lista, dodawanie/edycja, szczegóły, statystyki)
 ├── ViewModels/    # logika ekranów (MVVM)

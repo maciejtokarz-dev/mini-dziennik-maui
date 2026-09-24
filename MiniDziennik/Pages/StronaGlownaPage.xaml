@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniDziennik.Pages.StronaGlownaPage"
+             BackgroundColor="#F9F6F0"
+             Title="Start"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0" Padding="20,16,20,30">
+            <VerticalStackLayout Spacing="24">
+
+                <VerticalStackLayout Spacing="6" Margin="0,10,0,6">
+                    <Label Text="DZIENNIK" 
+                           FontSize="13" 
+                           TextColor="#EF795A" 
+                           FontAttributes="Bold"
+                           CharacterSpacing="1" />
+                    <Label Text="Twoje wpisy" 
+                           FontSize="32" 
+                           FontAttributes="Bold" 
+                           TextColor="#1E1E1E" />
+                </VerticalStackLayout>
+
+                <Border BackgroundColor="#FFFFFF"
+                        StrokeShape="RoundRectangle 28"
+                        StrokeThickness="0"
+                        Padding="20">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding WagaCardCommand}" />
+                    </Border.GestureRecognizers>
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="20">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="Waga" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" VerticalOptions="Center" />
+                            <Border Grid.Column="1" BackgroundColor="#393838" StrokeShape="RoundRectangle 14" WidthRequest="48" HeightRequest="40" StrokeThickness="0">
+                                <Label Text="kg" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                        </Grid>
+
+                        <Border BackgroundColor="#EFECE5" StrokeShape="RoundRectangle 20" Padding="18" StrokeThickness="0">
+                            <VerticalStackLayout Spacing="4">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Text="Wartość" FontSize="13" TextColor="#9B9893" />
+                                    <Label Text="{Binding DataOstatniejWagi}" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
+                                </Grid>
+                                <Label Text="{Binding OstatniaWaga}" FontSize="26" FontAttributes="Bold" TextColor="#1E1E1E" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#FFFFFF"
+                        StrokeShape="RoundRectangle 28"
+                        StrokeThickness="0"
+                        Padding="20">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NotatkiCardCommand}" />
+                    </Border.GestureRecognizers>
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="20">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="Notatki" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" VerticalOptions="Center" />
+                            <Border Grid.Column="1" BackgroundColor="#393838" StrokeShape="RoundRectangle 14" WidthRequest="48" HeightRequest="40" StrokeThickness="0">
+                                <Label Text="txt" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                        </Grid>
+
+                        <Border BackgroundColor="#EFECE5" StrokeShape="RoundRectangle 20" Padding="18" StrokeThickness="0">
+                            <VerticalStackLayout Spacing="4">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Text="Ostatnia notatka" FontSize="13" TextColor="#9B9893" />
+                                    <Label Text="{Binding DataOstatniejNotatki}" FontSize="13" TextColor="#9B9893" HorizontalOptions="End" />
+                                </Grid>
+                                <Label Text="{Binding OstatniaNotatka}" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Grid.Row="0"
+                Text="+" 
+                FontSize="28"
+                TextColor="White"
+                FontAttributes="Bold"
+                BackgroundColor="#EF795A"
+                CornerRadius="28"
+                WidthRequest="56"
+                HeightRequest="56"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,20,16"
+                Command="{Binding DodajWpisCommand}">
+            <Button.Shadow>
+                <Shadow Brush="#EF795A" Opacity="0.35" Offset="0,4" Radius="8"/>
+            </Button.Shadow>
+        </Button>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniDziennik.Pages.ListaWpisowPage"
+             BackgroundColor="#F9F6F0"
+             Title="Lista Wpisów"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" Padding="20,16" VerticalOptions="Center">
+
+            <!-- Przycisk Powrót -->
+            <Button Grid.Column="0"
+                    Text="&lt;" 
+                    FontSize="28" 
+                    TextColor="#1E1E1E" 
+                    BackgroundColor="Transparent" 
+                    Padding="0" 
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    HorizontalOptions="Start"
+                    Command="{Binding WsteczCommand}" />
+
+            <!-- Tytuł nagłówka -->
+            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0">
+                <Label Text="{Binding NazwaKategorii}"
+                       FontSize="11" 
+                       TextColor="#EF795A" 
+                       FontAttributes="Bold" 
+                       CharacterSpacing="1" />
+                <Label Text="Historia wpisów" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="#1E1E1E" />
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2"
+                    IsVisible="{Binding CzyWaga}"
+                    StrokeShape="RoundRectangle 12"
+                    BackgroundColor="#FFF0ED"
+                    Stroke="Transparent"
+                    Padding="0"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OtworzWykresCommand}" />
+                </Border.GestureRecognizers>
+
+                <Label Text="📊" 
+                       FontSize="18" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </Border>
+        </Grid>
+
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding Wpisy}"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding WybierzWpisCommand}"
+            SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
+            Margin="20,0,20,90">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#FFFFFF" StrokeShape="RoundRectangle 20" StrokeThickness="0" Padding="12" Margin="0,0,0,12">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.02" Offset="0,2" Radius="8"/>
+                        </Border.Shadow>
+
+                        <Grid ColumnDefinitions="*, Auto" Padding="8,4">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="{Binding Wartosc}" FontSize="18" FontAttributes="Bold" TextColor="#1E1E1E" />
+                                <Label Text="{Binding DataWpisu}" FontSize="12" TextColor="#9B9893" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="›" FontSize="20" TextColor="#9B9893" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="16"
+            Padding="40"
+            IsVisible="{Binding CzyBrakWpisow}">
+            <Border
+                BackgroundColor="#EFECE5"
+                StrokeShape="RoundRectangle 40"
+                WidthRequest="80"
+                HeightRequest="80"
+                StrokeThickness="0"
+                HorizontalOptions="Center">
+                <Label
+                    Text="⚖️"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Border>
+            <Label
+                Text="Brak wpisów"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="#1E1E1E"
+                HorizontalOptions="Center" />
+            <Label
+                Text="Nie dodano jeszcze żadnego pomiaru dla tego typu."
+                FontSize="14"
+                TextColor="#9B9893"
+                HorizontalTextAlignment="Center" />
+            <Button
+                Text="Dodaj pierwszy wpis"
+                BackgroundColor="#EF795A"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="16"
+                Padding="24,12"
+                Margin="0,8,0,0"
+                Command="{Binding DodajWpisCommand}" />
+        </VerticalStackLayout>
+
+        <Button
+            Grid.Row="1"
+            Text="+"
+            FontSize="28"
+            TextColor="White"
+            FontAttributes="Bold"
+            BackgroundColor="#EF795A"
+            CornerRadius="28"
+            WidthRequest="56"
+            HeightRequest="56"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Margin="0,0,24,24"
+            Command="{Binding DodajWpisCommand}">
+            <Button.Shadow>
+                <Shadow Brush="#EF795A" Opacity="0.35" Offset="0,4" Radius="8"/>
+            </Button.Shadow>
+        </Button>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MiniDziennik.Pages.DodajEdytujWpisPage"
+    BackgroundColor="{StaticResource KolorTla}"
+    Title="DodajEdytujWpisPage"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="24,20,24,30"
+            Spacing="22">
+
+            <!-- GÓRNY PASEK -->
+            <Grid
+                ColumnDefinitions="50,*,50"
+                HeightRequest="50">
+
+                <Label
+                    Grid.Column="0"
+                    Text="&lt;"
+                    FontSize="40"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding WsteczCommand}" />
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+                <Label
+                    Grid.Column="1"
+                    Text="Dodaj wpis"
+                    FontSize="21"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Grid>
+
+
+            <!-- NAGŁÓWEK -->
+            <VerticalStackLayout
+                Margin="4,15,4,0"
+                Spacing="5">
+
+                <Label
+                    Text="NOWY WPIS"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    CharacterSpacing="1.5"
+                    TextColor="{StaticResource KolorAkcentu}" />
+
+                <Label
+                    Text="Dodaj coś nowego"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource KolorTekstu}" />
+
+            </VerticalStackLayout>
+
+
+            <!-- KARTA FORMULARZA -->
+            <Border
+                BackgroundColor="{StaticResource KolorKarty}"
+                Stroke="Transparent"
+                Padding="22"
+                StrokeShape="RoundRectangle 24">
+
+                <VerticalStackLayout Spacing="22">
+
+                    <!-- RODZAJ WPISU -->
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label
+                            Text="Rodzaj wpisu"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                        <Grid
+                            ColumnDefinitions="*,*"
+                            ColumnSpacing="10">
+                            <Button
+                                Grid.Column="0"
+                                Text="Waga"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                BackgroundColor="{StaticResource KolorPola}"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}"
+                                CornerRadius="14"
+                                HeightRequest="48"
+                                Command="{Binding WybierzWageCommand}">
+                                <Button.Triggers>
+                                    <DataTrigger
+                                        TargetType="Button"
+                                        Binding="{Binding CzyWaga}"
+                                        Value="True">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="{StaticResource KolorAkcentu}" />
+                                        <Setter
+                                            Property="TextColor"
+                                            Value="White" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button
+                                Grid.Column="1"
+                                Text="Notatka"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                BackgroundColor="{StaticResource KolorPola}"
+                                TextColor="{StaticResource KolorTekstuDrugorzednego}"
+                                CornerRadius="14"
+                                HeightRequest="48"
+                                Command="{Binding WybierzNotatkeCommand}">
+                                <Button.Triggers>
+                                    <DataTrigger
+                                        TargetType="Button"
+                                        Binding="{Binding CzyNotatka}"
+                                        Value="True">
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="{StaticResource KolorAkcentu}" />
+                                        <Setter
+                                            Property="TextColor"
+                                            Value="White" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
+                        </Grid>
+                    </VerticalStackLayout>
+
+
+                    <!-- FORMULARZ WAGI -->
+                    <VerticalStackLayout
+                        IsVisible="{Binding CzyWaga}"
+                        Spacing="10">
+
+                        <Label
+                            Text="Wartość"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                        <Grid
+                            ColumnDefinitions="*,Auto"
+                            ColumnSpacing="10">
+
+                            <Border
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource KolorPola}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 16"
+                                Padding="17,0"
+                                HeightRequest="62">
+
+                                <Entry
+                                    Text="{Binding WartoscWagi, Mode=TwoWay}"
+                                    FontSize="24"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    Keyboard="Numeric"
+                                    VerticalOptions="Center"
+                                    Placeholder="Wpisz wartość"
+                                    PlaceholderColor="{StaticResource KolorTekstuDrugorzednego}" />
+
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource KolorCiemny}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="17,0"
+                                HeightRequest="62">
+
+                                <Label
+                                    Text="kg"
+                                    FontSize="17"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center" />
+
+                            </Border>
+
+                        </Grid>
+
+                        <Label
+                            Text="Zakres: 20–300 kg"
+                            FontSize="12"
+                            TextColor="{StaticResource KolorTekstuDrugorzednego}"
+                            Margin="3,0,0,0" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- FORMULARZ NOTATKI -->
+                    <VerticalStackLayout
+                        IsVisible="{Binding CzyNotatka}"
+                        Spacing="10">
+
+                        <Label
+                            Text="Treść notatki"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                        <Border
+                            BackgroundColor="{StaticResource KolorPola}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 16"
+                            Padding="17,12">
+
+                            <Grid RowDefinitions="*,Auto">
+
+                                <Editor
+                                    Grid.Row="0"
+                                    Text="{Binding TrescNotatki, Mode=TwoWay}"
+                                    FontSize="16"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    Placeholder="Napisz coś..."
+                                    PlaceholderColor="{StaticResource KolorTekstuDrugorzednego}"
+                                    AutoSize="TextChanges"
+                                    MinimumHeightRequest="140"
+                                    MaxLength="500" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Text="{Binding LiczbaZnakow}"
+                                    FontSize="12"
+                                    TextColor="{StaticResource KolorTekstuDrugorzednego}"
+                                    HorizontalOptions="End"
+                                    Margin="0,5,0,0" />
+
+                            </Grid>
+
+                        </Border>
+
+                    </VerticalStackLayout>
+
+
+                    <!-- DATA -->
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label
+                            Text="Data wpisu"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource KolorTekstu}" />
+
+                        <Border
+                            BackgroundColor="{StaticResource KolorPola}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 16"
+                            Padding="17,0"
+                            HeightRequest="62">
+
+                            <Grid ColumnDefinitions="*, Auto, *">
+                                <DatePicker
+                                    Grid.Column="0"
+                                    Date="{Binding DataWpisu, Mode=TwoWay}"
+                                    Format="dd MMMM yyyy"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Center" />
+
+                                <BoxView Grid.Column="1"
+                                         WidthRequest="1"
+                                         Color="{StaticResource KolorTekstuDrugorzednego}"
+                                         Opacity="0.2"
+                                         Margin="0.12" />
+
+                                <TimePicker
+                                    Grid.Column="2"
+                                    Time="{Binding GodzinaWpisu, Mode=TwoWay}"
+                                    Format="HH:mm"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource KolorTekstu}"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Grid>
+
+                        </Border>
+
+                        <Label
+                            Text="Domyślnie ustawiana na teraz"
+                            FontSize="12"
+                            TextColor="{StaticResource KolorTekstuDrugorzednego}"
+                            Margin="3,0,0,0" />
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Label
+                Text="{Binding KomunikatBledu}"
+                IsVisible="{Binding CzyJestBlad}"
+                FontSize="13"
+                TextColor="{StaticResource KolorAkcentu}"
+                Margin="3,0,3,0" />
+
+            <!-- PRZYCISKI -->
+            <VerticalStackLayout
+                Spacing="12"
+                Margin="0,2,0,0">
+
+                <Button
+                    Text="Zapisz wpis"
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource KolorAkcentu}"
+                    CornerRadius="18"
+                    HeightRequest="58"
+                    Command="{Binding ZapiszCommand}" />
+
+                <Button
+                    Text="Anuluj"
+                    FontSize="16"
+                    TextColor="{StaticResource KolorTekstu}"
+                    BackgroundColor="Transparent"
+                    BorderColor="#D8D4CE"
+                    BorderWidth="1"
+                    CornerRadius="18"
+                    HeightRequest="54"
+                    Command="{Binding AnulujCommand}" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
