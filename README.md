@@ -62,7 +62,6 @@ Projekt wykonany w dwuosobowym zespole (design i implementacja):
 
 ## Możliwe dalsze usprawnienia
 
-- Przechowywanie wpisów w lokalnej bazie danych (SQLite)
 - Wyszukiwanie i filtrowanie wpisów
 - Testy jednostkowe warstwy ViewModel
 - Ciemny motyw
