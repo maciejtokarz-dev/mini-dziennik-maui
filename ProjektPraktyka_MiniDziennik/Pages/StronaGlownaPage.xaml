@@ -28,7 +28,7 @@
                         StrokeThickness="0"
                         Padding="20">
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnWagaCard_Clicked" />
+                        <TapGestureRecognizer Command="{Binding WagaCardCommand}" />
                     </Border.GestureRecognizers>
                     <Border.Shadow>
                         <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
@@ -59,7 +59,7 @@
                         StrokeThickness="0"
                         Padding="20">
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNotatkiCard_Clicked" />
+                        <TapGestureRecognizer Command="{Binding NotatkiCardCommand}" />
                     </Border.GestureRecognizers>
                     <Border.Shadow>
                         <Shadow Brush="Black" Opacity="0.02" Offset="0,4" Radius="10"/>
@@ -100,7 +100,7 @@
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="0,0,20,16"
-                Clicked="OnDodajWpisClicked">
+                Command="{Binding DodajWpisCommand}">
             <Button.Shadow>
                 <Shadow Brush="#EF795A" Opacity="0.35" Offset="0,4" Radius="8"/>
             </Button.Shadow>

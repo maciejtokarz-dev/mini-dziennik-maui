@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using ProjektPraktyka_MiniDziennik.Models;
+﻿using ProjektPraktyka_MiniDziennik.Models;
+using ProjektPraktyka_MiniDziennik.Pages;
 using ProjektPraktyka_MiniDziennik.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace ProjektPraktyka_MiniDziennik.ViewModels;
 
@@ -20,6 +22,23 @@ public class StronaGlownaViewModel : INotifyPropertyChanged
         _wpisService = wpisService;
 
         Odswiez();
+
+        DodajWpisCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync(nameof(Pages.DodajEdytujWpisPage));
+        });
+
+        WagaCardCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync(
+            $"{nameof(ListaWpisowPage)}?kategoria=WAGA");
+        });
+
+        NotatkiCardCommand = new Command(async () =>
+        {
+            await Shell.Current.GoToAsync(
+            $"{nameof(ListaWpisowPage)}?kategoria=NOTATKI");
+        });
     }
 
     public string OstatniaWaga
@@ -73,6 +92,12 @@ public class StronaGlownaViewModel : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+
+    // Commandy
+
+    public ICommand DodajWpisCommand { get; }
+    public ICommand WagaCardCommand { get; }
+    public ICommand NotatkiCardCommand { get; }
 
     public async void Odswiez()
     {
