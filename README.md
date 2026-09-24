@@ -57,8 +57,8 @@ ProjektPraktyka_MiniDziennik/
 
 Projekt wykonany w dwuosobowym zespole (design i implementacja):
 
-- **Maciej Tokarz** – [UZUPEŁNIJ: za co byłeś odpowiedzialny, np. ekrany, style, nawigacja]
-- **[UZUPEŁNIJ: imię/login kolegi]** – [UZUPEŁNIJ: zakres pracy]
+- **Maciej Tokarz** – Strona główna, lista wpisów, baza danych, wykres
+- **Paweł Nowakowski** – Szczegóły wpisu, Statystyki wagi, widok szczegółów, edycja, usuwanie
 
 ## Możliwe dalsze usprawnienia
 
