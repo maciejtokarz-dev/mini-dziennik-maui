@@ -26,6 +26,7 @@ Projekt zespołowy (2 osoby): od moodboardu i mockupu, przez design, po działaj
 
 - .NET MAUI, C#, XAML
 - SQLite (lokalna baza danych)
+- LiveCharts2 (wykresy)
 - Wzorzec MVVM z użyciem `Command` (zamiast obsługi zdarzeń `Clicked`)
 - Testowane na emulatorze Androida (Pixel 8, API 36)
 
@@ -52,9 +53,13 @@ git clone https://github.com/maciejtokarz-dev/mini-dziennik-maui.git
 ```
 ProjektPraktyka_MiniDziennik/
 ├── Models/        # modele danych
-├── ViewModels/    # logika widoków (MVVM)
-├── Views/         # ekrany XAML
-└── Resources/     # obrazy, czcionki, style
+├── Pages/         # ekrany XAML (strona główna, lista, dodawanie/edycja, szczegóły, statystyki)
+├── ViewModels/    # logika ekranów (MVVM)
+├── Services/      # serwisy (np. dostęp do bazy danych)
+├── Platforms/     # kod specyficzny dla platform
+├── Resources/     # obrazy, czcionki, style
+├── AppShell.xaml  # nawigacja
+└── MauiProgram.cs # konfiguracja aplikacji
 ```
 
 ## Autorzy
