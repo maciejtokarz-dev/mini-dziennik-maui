@@ -35,7 +35,7 @@ Wymagania:
 Kroki:
 
 ```bash
-git clone https://github.com/maciejtokarz-dev/<nazwa-repozytorium>.git
+git clone https://github.com/maciejtokarz-dev/mini-dziennik-maui.git
 ```
 
 1. Otwórz plik `ProjektPraktyka_MiniDziennik.slnx` w Visual Studio.
